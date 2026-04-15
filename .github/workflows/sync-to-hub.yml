@@ -1,0 +1,16 @@
+name: Sync to Hugging Face Hub
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Force Sync to Hugging Face
+        run: git push --force https://ZikamiAb:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/ZikamiAb/table-classifier main:main
