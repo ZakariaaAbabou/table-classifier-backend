@@ -66,8 +66,9 @@ public class DocumentParser {
 
     private void writeDebug(List<String> rawLines, String fileName) {
         try {
-            File debugFile = new File("C:\\Users\\HP\\Desktop\\TableTests\\parsing_debug.txt");
-            debugFile.getParentFile().mkdirs();
+            File debugDir = new File("debug_logs");
+            if (!debugDir.exists()) debugDir.mkdirs();
+            File debugFile = new File(debugDir, "parsing_debug.txt");
             try (PrintWriter writer = new PrintWriter(new FileWriter(debugFile, true))) {
                 writer.println("\n--- NEW PARSE SESSION: " + fileName + " (" + new Date() + ") ---");
                 for (String line : rawLines) writer.println(line);
