@@ -17,8 +17,8 @@ WORKDIR /app
 # Copy the built JAR from the build stage
 COPY --from=build /app/target/table-classifier-0.0.1-SNAPSHOT.jar app.jar
 
-# Expose the port used by Hugging Face Spaces
-EXPOSE 7860
+# Expose the standard Spring Boot port
+EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
